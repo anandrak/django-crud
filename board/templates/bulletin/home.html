@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block content %}
+<table class="table table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">index</th>
+            <th scope="col">title</th>
+            <th scope="col">author</th>
+            <th scope="col">date</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+          <tr>
+            <th scope="row">{{ post.id }}</th>
+            <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
+            <td>{{ post.author }}</td>
+            <td>{{ post.date|date:"F d, Y" }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}
