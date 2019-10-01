@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tfd#1e$)^$j*-^rb4vwh^lj4cf70hs9-4zn9lzpz!801y1_xec'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# if DEBUG = False when there's an error it's going to show 404 not specific error contents
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -80,22 +82,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME' : 'djangoboard',
-        'USER' : 'root',
-        'PASSWORD' : 'root',
+        'USER' : os.environ.get('DB_USER'),
+        'PASSWORD' : os.environ.get('DB_PASSWORD'),
         'HOST' : 'localhost',
         'PORT' : '3306',
     }
 }
-# DATABASE = {
-#     'default' :{
-#         'ENGINE' : 'django.db.backends.mysql',
-#         'OPTIONS' : {
-#             'read_default_file': './my.cnf',
-#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
-
-#         }
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -144,5 +136,26 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/' 
 #after login redirect to home
 LOGIN_REDIRECT_URL = 'home'
-#if anonymous tries to approach private profile then redriect to
+# if anonymous tries to approach private profile then redriect to
 LOGIN_URL = 'login'
+
+# gmail change password
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = os.environ.get('GOOGLE_ID')
+EMAIL_HOST_PASSWORD = os.environ.get('GOOGLE_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# AWS S3 storage settings 
+# check django storages documentation for specific settings for this
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_FILE_OVERWRITE = False
+
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
