@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "41dc878ac9a416fab35b972e1a7a93f28fd8698a139c6d3dd0fe25cc633829e1"
+            "sha256": "6aa1c4a0c1a8e9c66dd6560e9646f2c26b47765b30245377d21ca6d223eeb430"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,16 +31,6 @@
             ],
             "index": "pypi",
             "version": "==1.7.2"
-        },
-        "mysqlclient": {
-            "hashes": [
-                "sha256:79a498ddda955e488f80c82a6392bf6e07c323d48db236033f33825665d8ba5c",
-                "sha256:8c3b61d89f7daaeab6aad6bf4c4bc3ef30bec1a8169f94dc59aea87ba2fabf80",
-                "sha256:9c737cc55a5dc8dd3583a942d5a9b21be58d16f00f5fefca4e575e7d9682e98c",
-                "sha256:9c8090f601c8aed602dfea982ccdafae89a5c2b34d12b8b735043fb67f41cd04"
-            ],
-            "path": "C:/users/ltgya/Desktop/mysqlclient-1.4.4-cp37-cp37m-win32.whl",
-            "version": "==1.4.4"
         },
         "pytz": {
             "hashes": [
