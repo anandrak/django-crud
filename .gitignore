@@ -1,6 +1,10 @@
 
 # local pics file
 ./board/media
+
+# vscode
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
